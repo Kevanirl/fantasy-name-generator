@@ -25,7 +25,26 @@ const firstNames = [
     "Gendry", "Brienne", "Sandor", "Davos", "Eddard", "Petyr",
     "Melisandre", "Ygritte", "Oberyn", "Rhaegar", "Asha", "Aelar", "Eldrin", "Faelar", "Therion", "Sylvaris", "Lorien", "Arannis", "Erevan",
     "Mythrandir","Caelthas","Ithilion","Vaelis","Rynar","Elion","Thamior","Aeris","Lioren","Sylrin","Vaelin","Ithryn","Caeris",
-    "Elthir","Nerith","Thyren","Saeris","Mythil","Faelis","Rilith","Eryndor","Quendolin"
+    "Elthir","Nerith","Thyren","Saeris","Mythil","Faelis","Rilith","Eryndor","Quendolin", "Brevik",
+    "Calithra",
+    "Corvath",
+    "Dravena",
+    "Drovak",
+    "Elvynna",
+    "Harkan",
+    "Jorvath",
+    "Kaelith",
+    "Kaelric",
+    "Lysera",
+    "Maldrin",
+    "Morwen",
+    "Nysera",
+    "Soryn",
+    "Sorielle",
+    "Thalira",
+    "Tharion",
+    "Valmir",
+    "Veyra"
 ];
 
 // Random last names
@@ -50,7 +69,16 @@ const lastNames = [
     "Hightower","Seaworth","Reed","Baelish","Blackfyre","Dayne",
     "Florent","Karstark","Harrenhal","Velaryon","Durrandon",
     "Redwyne","Moonwhisper","Silverleaf","Dawnrunner","Starfall","Nightbreeze",
-    "Sunweaver","Shadowgrove","Frostpetal","Lightbranch","Windstride"
+    "Sunweaver","Shadowgrove","Frostpetal","Lightbranch","Windstride", "Bloodscar", "Aradoth","Blackthorn",
+    "Bloodfallow",
+    "Duskwarden",
+    "Frostmarrow",
+    "Grimhold",
+    "Ironveil",
+    "Nightbane",
+    "Ravenscar",
+    "Shadowrend",
+    "Stormvein"
 ];
 
 // Functions
