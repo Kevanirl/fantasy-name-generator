@@ -9,7 +9,12 @@
 
     <h1>Fantasy Name Generator</h1>
 
-    <button onclick="generateName()">Generate Name</button>
+<label for="firstName">Enter a first name:</label><br>
+<input type="text" id="firstName" placeholder="Type a name here">
+<br><br>
+<button onclick="generatePairedName()">Generate Second Name</button>
+
+<p id="pairedNameOutput">Your second name will appear here</p>
 
     <p id="nameOutput">Click the button to get a name</p>
 
