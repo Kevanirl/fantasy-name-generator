@@ -1,26 +1,140 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #1e1e2f;
-    color: #ffffff;
-    padding-top: 50px;
+/* Import fantasy-style font */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --bg-dark: #0f172a;
+  --bg-card: #111827;
+  --accent: #38bdf8;
+  --accent-soft: #0ea5e9;
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+  --border-glow: rgba(56, 189, 248, 0.35);
 }
 
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1e293b, var(--bg-dark));
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main Container */
+.container {
+  background: linear-gradient(180deg, #0b1220, var(--bg-card));
+  border: 1px solid var(--border-glow);
+  border-radius: 16px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 520px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.02),
+    0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* Title */
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.05em;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+/* Inputs */
+input[type="text"],
+select {
+  width: 100%;
+  background: #020617;
+  border: 1px solid #1e293b;
+  color: var(--text-main);
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder {
+  color: var(--text-muted);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(56,189,248,0.25);
+}
+
+/* Buttons */
 button {
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #6a5acd;
-    color: white;
+  width: 100%;
+  background: linear-gradient(180deg, var(--accent), var(--accent-soft));
+  border: none;
+  color: #020617;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.85rem;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 0.75rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 button:hover {
-    background-color: #7b6cff;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(56,189,248,0.35);
 }
 
-#nameOutput {
-    font-size: 24px;
-    margin-top: 30px;
+button.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
 }
+
+/* Output */
+.output {
+  margin-top: 2rem;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: rgba(2,6,23,0.8);
+  border: 1px dashed var(--border-glow);
+  text-align: center;
+}
+
+.output span {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+}
+
+/* Small helpers */
+.row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.row button {
+  flex: 1;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
