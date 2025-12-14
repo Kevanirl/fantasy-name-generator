@@ -5,7 +5,16 @@ const firstNames = [
     "Balthor","Caelith","Daeryn","Elowen","Faelar","Gorath","Haleth",
     "Isolde","Jareth","Kael","Lyra","Maelis","Nymeria","Orin","Peregrin",
     "Quenara","Rhiannon","Sylas","Thalor","Ulric","Vaelin","Wynter",
-    "Xandor","Ysolde","Zerath"
+    "Xandor","Ysolde","Zerath","Aine", "Bran", "Cian", "Dara", "Eira", "Fionn", "Grainne",
+    "Kael", "Lir", "Maeve", "Niamh", "Orla", "Padraig", "Ronan",
+    "Siobhan", "Taran", "Una", "Vevina", "Wynne", "Yseult", "Zaira","Aranel", "Thalion", "Eldarion", "Galadriel", "Legolas", "Faramir",
+    "Elrohir", "Arwen", "Celeborn", "Finrod", "Gildor", "Haldir",
+    "Isildur", "Luthien", "Maedhros", "Nimrodel", "Oropher", "Peregrin",
+    "Quendolin", "Rohan", "Silmarien", "Tauriel", "Ulmo", "Voronwe", "Yavanna","Darrow", "Eo", "Mustang", "Sevro", "Cassius", "Roque",
+    "Pax", "Lysander", "Victra", "Rhonna", "Ephraim",
+    "Lyria", "Fitchner", "Antonia", "Titus", "Quinn", "Apollo",
+    "Atlas", "Electra", "Narol", "Dancer", "Harmony", "Mickey",
+    "Octavia", "Adrius", "Tiberius", "Aja", "Ragnar"
 ];
 
 // Fantasy style last names
@@ -16,7 +25,13 @@ const lastNames = [
     "Glimmerforge","Hawkridge","Ironbane","Jadeeye","Korrath","Lunaris",
     "Moonshadow","Nightbreeze","Oakenheart","Pyrelight","Quickwater","Ravencrest",
     "Stormrider","Thornfield","Umbermoor","Valewind","Wintermere","Xyrath",
-    "Yarrowind","Zephyros"
+    "Yarrowind","Zephyros","Evenstar", "Lightbringer", "Stormwind", "Oakenshield", "Silverleaf",
+    "Ironfoot", "Shadowfax", "Windrunner", "Moonwhisper", "Starfire",
+    "Dawntracker", "Nightbreeze", "Frosthelm", "Goldenbranch", "Stonehelm",
+    "Brightblade", "Swiftarrow", "Sunshadow", "Mistwalker", "Darkwater",   "au Andromedus", "au Augustus", "au Barca", "au Bellona",
+    "au Lune", "au Telemanus", "au Trachus", "au Faran",
+    "au Valii-Rath", "au Raa", "of Lagalos", "of Lykos",
+    "ti Horn", "ti Nakamura"
 ];
 
 // Generate a completely random full name
