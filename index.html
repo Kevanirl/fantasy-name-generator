@@ -6,8 +6,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<h1>Fantasy Name Generator</h1>
 
-    <h1>Fantasy Name Generator</h1>
+<!-- Full random name -->
+<button onclick="generateFullName()">Generate Full Name</button>
+<p id="fullNameOutput">Your full name will appear here</p>
+
+<hr>
+
+<!-- Matching second name -->
+<label for="firstNameInput">Enter a first name:</label><br>
+<input type="text" id="firstNameInput" placeholder="Type a first name">
+<br><br>
+<button onclick="generateMatchingLastName()">Generate Matching Last Name</button>
+<p id="matchedLastNameOutput">Your matching last name will appear here</p>
+
+<script src="script.js"></script>
 
 <label for="firstName">Enter a first name:</label><br>
 <input type="text" id="firstName" placeholder="Type a name here">

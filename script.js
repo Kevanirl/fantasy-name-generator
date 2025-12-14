@@ -1,38 +1,31 @@
-function generateName() {
-    const prefixes = [
-        "El", "Ar", "Fa", "Da", "Ka", "Lu", "Mor", "Va", "Ze"
-    ];
+// Random first names inspired by WoW style
+const firstNames = [
+    "Elunaria","Stormwarden","Gorgrim","Thalorien","Sylvalis",
+    "Zulgar","Lyraen","Valdrek","Morrath","Eldaeris","Ser"
+];
 
-    const suffixes = [
-        "ion", "eth", "or", "iel", "a", "en", "us", "mir", "th"
-    ];
+// Fantasy style last names
+const lastNames = [
+    "Ironfist","Dawnblade","Shadowmere","Stormcaller","Bloodforge",
+    "Windwhisper","Nightshade","Starwatcher","Frostweaver","Shadowhunter"
+];
 
-    const randomPrefix = prefixes[Math.floor(Math.random() * prefixes.length)];
-    const randomSuffix = suffixes[Math.floor(Math.random() * suffixes.length)];
-
-    const fantasyName = randomPrefix + randomSuffix;
-
-    document.getElementById("nameOutput").textContent = fantasyName;
+function generateFullName() {
+    const randomFirst = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const randomLast  = lastNames[Math.floor(Math.random() * lastNames.length)];
+    const fullName = randomFirst + " " + randomLast;
+    document.getElementById("fullNameOutput").textContent = fullName;
 }
-function generatePairedName() {
-    const firstName = document.getElementById("firstName").value.trim();
 
+function generateMatchingLastName() {
+    const firstName = document.getElementById("firstNameInput").value.trim();
     if (firstName === "") {
         alert("Please enter a first name!");
         return;
     }
 
-    // Define some syllables to pair nicely with the first name
-    const suffixes = ["ion", "eth", "or", "iel", "a", "en", "us", "mir", "th", "ara", "is", "on", "ys"];
+    const randomLast = lastNames[Math.floor(Math.random() * lastNames.length)];
 
-    // Pick a random suffix
-    const randomSuffix = suffixes[Math.floor(Math.random() * suffixes.length)];
-
-    // Optionally, take the first letter of the first name to influence the second name
-    const firstLetter = firstName.charAt(0).toUpperCase();
-
-    // Combine first letter with suffix to make it sound harmonious
-    const secondName = firstLetter + randomSuffix;
-
-    document.getElementById("pairedNameOutput").textContent = secondName;
+    const matchedName = firstName + " " + randomLast;
+    document.getElementById("matchedLastNameOutput").textContent = matchedName;
 }
