@@ -1,13 +1,13 @@
 // Random first names inspired by WoW style
 const firstNames = [
     "Elunaria","Stormwarden","Gorgrim","Thalorien","Sylvalis",
-    "Zulgar","Lyraen","Valdrek","Morrath","Eldaeris","Ser"
+    "Zulgar","Lyraen","Valdrek","Morrath","Eldaeris","Ser","Aeliana","Balthor","Caelith","Daeryn","Elowen","Faelar","Gorath","Haleth","Isolde","Jareth","Kael","Lyra","Maelis","Nymeria","Orin","Peregrin","Quenara","Rhiannon","Sylas","Thalor","Ulric","Vaelin","Wynter","Xandor","Ysolde","Zerath"
 ];
 
 // Fantasy style last names
 const lastNames = [
     "Ironfist","Dawnblade","Shadowmere","Stormcaller","Bloodforge",
-    "Windwhisper","Nightshade","Starwatcher","Frostweaver","Shadowhunter"
+"Windwhisper","Nightshade","Starwatcher","Frostweaver","Shadowhunter""Amberfall","Brightwood","Cinderbane","Duskbringer","Ebonhart","Frostveil","Glimmerforge","Hawkridge","Ironbane","Jadeeye","Korrath","Lunaris","Moonshadow","Nightbreeze","Oakenheart","Pyrelight","Quickwater","Ravencrest","Stormrider","Thornfield","Umbermoor","Valewind","Wintermere","Xyrath","Yarrowind","Zephyros"
 ];
 
 function generateFullName() {
