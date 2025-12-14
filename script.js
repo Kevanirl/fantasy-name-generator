@@ -30,7 +30,9 @@ const firstNames = [
       "Vaelis",
       "Rynar",
       "Elion",
-      "Thamior"
+      "Thamior", "Aeris","Lioren","Sylrin","Vaelin","Ithryn","Caeris",
+      "Elthir","Nerith","Thyren","Saeris","Mythil",
+      "Faelis","Rilith","Eryndor","Quendolin"
 ];
 
 // Fantasy style last names
@@ -53,7 +55,7 @@ const lastNames = [
     "Penbryn", "of Caerleon", "ap Meurig", "ap Llewelyn", "af Angharad", "Tír na nÓg", "Arryn", "Tully", "Bolton", "Mormont", "Clegane",
     "Hightower", "Seaworth", "Reed", "Baelish", "Blackfyre", "Dayne",
     "Florent", "Karstark", "Harrenhal", "Velaryon", "Durrandon",
-    "Redwyne" "Moonwhisper",
+    "Redwyne", "Moonwhisper",
       "Silverleaf",
       "Dawnrunner",
       "Starfall",
@@ -84,4 +86,9 @@ function generateMatchingLastName() {
     const randomLast = lastNames[Math.floor(Math.random() * lastNames.length)];
     const matchedName = firstName + " " + randomLast;
     document.getElementById("matchedLastNameOutput").textContent = matchedName;
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("fullNameBtn").addEventListener("click", generateFullName);
+    document.getElementById("matchLastBtn").addEventListener("click", generateMatchingLastName);
+});
+
 }
