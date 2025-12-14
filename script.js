@@ -21,9 +21,16 @@ const firstNames = [
     "Deirdre", "Medb", "Conn", "Nuada", "Morrigan", "Bres",
     "Ériu", "Dagda", "Étaín", "Macha", "Cernunnos", "Ailill",
     "Éogan", "Cliodhna", "Jon", "Tyrion", "Arya", "Sansa", "Bran", "Cersei",
-    "Jaime", "Robb", "Jorah", "Theon",
+    "The Idiot", "Robb", "Jorah", "Theon",
     "Gendry", "Brienne", "Sandor", "Davos", "Eddard", "Petyr",
-    "Melisandre", "Ygritte", "Oberyn", "Rhaegar", "Asha"
+    "Melisandre", "Ygritte", "Oberyn", "Rhaegar", "Asha", "Aelar", "Eldrin", "Faelar", "Therion", "Sylvaris", "Lorien", "Arannis", "Erevan",
+      "Mythrandir",
+      "Caelthas",
+      "Ithilion",
+      "Vaelis",
+      "Rynar",
+      "Elion",
+      "Thamior"
 ];
 
 // Fantasy style last names
@@ -46,7 +53,16 @@ const lastNames = [
     "Penbryn", "of Caerleon", "ap Meurig", "ap Llewelyn", "af Angharad", "Tír na nÓg", "Arryn", "Tully", "Bolton", "Mormont", "Clegane",
     "Hightower", "Seaworth", "Reed", "Baelish", "Blackfyre", "Dayne",
     "Florent", "Karstark", "Harrenhal", "Velaryon", "Durrandon",
-    "Redwyne"
+    "Redwyne" "Moonwhisper",
+      "Silverleaf",
+      "Dawnrunner",
+      "Starfall",
+      "Nightbreeze",
+      "Sunweaver",
+      "Shadowgrove",
+      "Frostpetal",
+      "Lightbranch",
+      "Windstride"
 ];
 
 // Generate a completely random full name
