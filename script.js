@@ -6,15 +6,21 @@ const firstNames = [
     "Isolde","Jareth","Kael","Lyra","Maelis","Nymeria","Orin","Peregrin",
     "Quenara","Rhiannon","Sylas","Thalor","Ulric","Vaelin","Wynter",
     "Xandor","Ysolde","Zerath","Aine", "Bran", "Cian", "Dara", "Eira", "Fionn", "Grainne",
-    "Kael", "Lir", "Maeve", "Niamh", "Orla", "Padraig", "Ronan",
-    "Siobhan", "Taran", "Una", "Vevina", "Wynne", "Yseult", "Zaira","Aranel", "Thalion", "Eldarion", "Galadriel", "Legolas", "Faramir",
+    "Kael", "Lir", "Maeve", "Niamh", "Orla", "Ronan",
+    "Siobhan", "Taran", "Vevina", "Wynne", "Yseult", "Zaira","Aranel", "Thalion", "Eldarion", "Faramir",
     "Elrohir", "Arwen", "Celeborn", "Finrod", "Gildor", "Haldir",
     "Isildur", "Luthien", "Maedhros", "Nimrodel", "Oropher", "Peregrin",
     "Quendolin", "Rohan", "Silmarien", "Tauriel", "Ulmo", "Voronwe", "Yavanna","Darrow", "Eo", "Mustang", "Sevro", "Cassius", "Roque",
     "Pax", "Lysander", "Victra", "Rhonna", "Ephraim",
     "Lyria", "Fitchner", "Antonia", "Titus", "Quinn", "Apollo",
     "Atlas", "Electra", "Narol", "Dancer", "Harmony", "Mickey",
-    "Octavia", "Adrius", "Tiberius", "Aja", "Ragnar"
+    "Octavia", "Adrius", "Tiberius", "Aja", "Ragnar","Fennec",
+    "Jyn", "Cassian","Aeron", "Branwen", "Cai", "Dafydd", "Eira", "Ffion", "Gwydion",
+    "Heulwen", "Idris", "Lleu", "Mabon", "Nerys", "Owain", "Rhiannon",
+    "Seren", "Taliesin", "Tegan", "Urien", "Ysbail", "Elen", "Maelon", "Cú Chulainn", "Fionn", "Lugh", "Brigid",
+    "Deirdre", "Medb", "Conn", "Nuada", "Morrigan", "Bres",
+    "Ériu", "Dagda", "Étaín", "Macha", "Cernunnos", "Ailill",
+    "Éogan", "Cliodhna"
 ];
 
 // Fantasy style last names
@@ -31,7 +37,10 @@ const lastNames = [
     "Brightblade", "Swiftarrow", "Sunshadow", "Mistwalker", "Darkwater",   "au Andromedus", "au Augustus", "au Barca", "au Bellona",
     "au Lune", "au Telemanus", "au Trachus", "au Faran",
     "au Valii-Rath", "au Raa", "of Lagalos", "of Lykos",
-    "ti Horn", "ti Nakamura"
+    "ti Horn", "ti Nakamura","Forgotten", "ap Rhys", "ferch Gwilym", "Dafyddson", "Llywelyn", "ab Owain",
+    "ap Gruffydd", "Penrose", "Gwynedd", "Trevelyan", "ap Hywel",
+    "ap Cadwaladr", "of Dyfed", "of Powys", "ab Morgan", "ap Tudor",
+    "Penbryn", "of Caerleon", "ap Meurig", "ap Llewelyn", "af Angharad", "Tír na nÓg",
 ];
 
 // Generate a completely random full name
