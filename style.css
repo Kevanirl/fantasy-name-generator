@@ -26,28 +26,17 @@ body {
   border: 1px solid #2c3355;
   text-align: center;
   
-  /* Rainbow glowing breathing border */
-  position: relative;
-  z-index: 1;
-  animation: glow 4s infinite alternate;
-  box-shadow: 0 0 20px #ff6ec4, 0 0 40px #42e695, 0 0 60px #7873f5;
+  /* Glowing breathing border */
+  animation: glow 3s infinite alternate;
+  box-shadow: 0 0 20px #e6d8a2, 0 0 40px #e6d8a2, 0 0 60px #e6d8a2;
 }
 
 @keyframes glow {
-  0% {
-    box-shadow: 0 0 20px #ff6ec4, 0 0 40px #42e695, 0 0 60px #7873f5;
+  from {
+    box-shadow: 0 0 20px #e6d8a2, 0 0 40px #e6d8a2, 0 0 60px #e6d8a2;
   }
-  25% {
-    box-shadow: 0 0 25px #42e695, 0 0 50px #7873f5, 0 0 70px #ff6ec4;
-  }
-  50% {
-    box-shadow: 0 0 30px #7873f5, 0 0 60px #ff6ec4, 0 0 80px #42e695;
-  }
-  75% {
-    box-shadow: 0 0 25px #ff6ec4, 0 0 50px #42e695, 0 0 70px #7873f5;
-  }
-  100% {
-    box-shadow: 0 0 20px #42e695, 0 0 40px #7873f5, 0 0 60px #ff6ec4;
+  to {
+    box-shadow: 0 0 50px #e6d8a2, 0 0 100px #e6d8a2, 0 0 150px #e6d8a2;
   }
 }
 
