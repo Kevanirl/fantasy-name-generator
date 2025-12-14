@@ -18,28 +18,41 @@ body {
 }
 
 .container {
+  position: relative;
   background: #151a2d;
   max-width: 480px;
   width: 90%;
   padding: 30px;
   border-radius: 12px;
-  border: 1px solid #2c3355;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-
-  /* Glowing breathing border */
-  animation: glow 2s infinite alternate;
-  box-shadow: 0 0 10px #e6d8a2, 0 0 20px #e6d8a2;
+  z-index: 1;
+  overflow: hidden; /* keeps glow inside */
 }
 
-@keyframes glow {
-  from {
-    box-shadow: 0 0 10px #e6d8a2, 0 0 20px #e6d8a2;
-  }
-  to {
-    box-shadow: 0 0 30px #e6d8a2, 0 0 50px #e6d8a2;
-  }
+.container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    #ff6ec4, 
+    #42e695, 
+    #7873f5, 
+    #ff6ec4
+  );
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: rotateGlow 6s linear infinite;
+  z-index: -1; /* behind the container */
 }
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 
 h1 {
   font-family: 'Cinzel', serif;
