@@ -1,41 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Fantasy Name Generator</title>
-    
-    <!-- Add your background styles here -->
-    <style>
-        body {
-            background-image: url('https://raw.githubusercontent.com/Kevanirl/fantasy-name-generator/refs/heads/main/Showoff.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
-        }
-    </style>
-
-    <!-- Optional external CSS -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fantasy Name Generator</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
-    <h1>Fantasy Name Generator</h1>
+  <h1>Fantasy Name Generator</h1>
+  <p class="subtitle">Generate random fantasy names or match a last name to your first name.</p>
 
-    <!-- Your buttons and inputs here -->
-    <button onclick="generateFullName()">Generate Full Name</button>
-    <p id="fullNameOutput">Your full name will appear here</p>
+  <!-- Input for custom first name -->
+  <input type="text" id="firstNameInput" placeholder="Enter a first name">
 
-    <hr>
+  <!-- Buttons -->
+  <button onclick="generateFullName()">Generate Random Full Name</button>
+  <button onclick="generateMatchingLastName()" class="secondary">Generate Matching Last Name</button>
 
-    <label for="firstNameInput">Enter a first name:</label><br>
-    <input type="text" id="firstNameInput" placeholder="Type a first name">
-    <br><br>
-    <button onclick="generateMatchingLastName()">Generate Matching Last Name</button>
-    <p id="matchedLastNameOutput">Your matching last name will appear here</p>
+  <!-- Output -->
+  <div class="output">
+    <span id="fullNameOutput"></span>
+    <span id="matchedLastNameOutput"></span>
+  </div>
+</div>
 
-    <script src="script.js"></script>
+<!-- JS -->
+<script src="script.js"></script>
 </body>
 </html>
-
-
