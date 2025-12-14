@@ -27,6 +27,9 @@ body {
   text-align: center;
   z-index: 1;
   overflow: hidden; /* keeps glow inside */
+  
+  /* Breathing shadow pulse */
+  animation: pulseGlow 3s infinite alternate;
 }
 
 .container::before {
@@ -47,6 +50,20 @@ body {
   animation: rotateGlow 6s linear infinite;
   z-index: -1; /* behind the container */
 }
+
+/* Rotating rainbow gradient */
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Breathing pulse effect */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 20px rgba(255,110,196,0.6), 0 0 40px rgba(66,230,149,0.4), 0 0 60px rgba(120,115,245,0.3); }
+  50% { box-shadow: 0 0 40px rgba(255,110,196,0.8), 0 0 80px rgba(66,230,149,0.6), 0 0 120px rgba(120,115,245,0.5); }
+  100% { box-shadow: 0 0 20px rgba(255,110,196,0.6), 0 0 40px rgba(66,230,149,0.4), 0 0 60px rgba(120,115,245,0.3); }
+}
+
 
 @keyframes rotateGlow {
   0% { transform: rotate(0deg); }
