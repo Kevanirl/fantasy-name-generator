@@ -3,28 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Fantasy Name Generator</title>
+    
+    <!-- Add your background styles here -->
+    <style>
+        body {
+            background-image: url('https://raw.githubusercontent.com/Kevanirl/fantasy-name-generator/refs/heads/main/Showoff.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+
+    <!-- Optional external CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Fantasy Name Generator</h1>
+    <h1>Fantasy Name Generator</h1>
 
-<!-- Full random name -->
-<button onclick="generateFullName()">Generate Full Name</button>
-<p id="fullNameOutput">Your full name will appear here</p>
+    <!-- Your buttons and inputs here -->
+    <button onclick="generateFullName()">Generate Full Name</button>
+    <p id="fullNameOutput">Your full name will appear here</p>
 
-<hr>
+    <hr>
 
-<!-- Matching second name -->
-<label for="firstNameInput">Enter a first name:</label><br>
-<input type="text" id="firstNameInput" placeholder="Type a first name">
-<br><br>
-<button onclick="generateMatchingLastName()">Generate Matching Last Name</button>
-<p id="matchedLastNameOutput">Your matching last name will appear here</p>
-
-<script src="script.js"></script>
-
-    <p id="nameOutput">Click the button to get a name</p>
+    <label for="firstNameInput">Enter a first name:</label><br>
+    <input type="text" id="firstNameInput" placeholder="Type a first name">
+    <br><br>
+    <button onclick="generateMatchingLastName()">Generate Matching Last Name</button>
+    <p id="matchedLastNameOutput">Your matching last name will appear here</p>
 
     <script src="script.js"></script>
 </body>
 </html>
+
+
