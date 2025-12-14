@@ -20,7 +20,10 @@ const firstNames = [
     "Seren", "Taliesin", "Tegan", "Urien", "Ysbail", "Elen", "Maelon", "Cú Chulainn", "Fionn", "Lugh", "Brigid",
     "Deirdre", "Medb", "Conn", "Nuada", "Morrigan", "Bres",
     "Ériu", "Dagda", "Étaín", "Macha", "Cernunnos", "Ailill",
-    "Éogan", "Cliodhna"
+    "Éogan", "Cliodhna", "Jon", "Tyrion", "Arya", "Sansa", "Bran", "Cersei",
+    "Jaime", "Robb", "Jorah", "Theon",
+    "Gendry", "Brienne", "Sandor", "Davos", "Eddard", "Petyr",
+    "Melisandre", "Ygritte", "Oberyn", "Rhaegar", "Asha"
 ];
 
 // Fantasy style last names
@@ -40,7 +43,10 @@ const lastNames = [
     "ti Horn", "ti Nakamura","Forgotten", "ap Rhys", "ferch Gwilym", "Dafyddson", "Llywelyn", "ab Owain",
     "ap Gruffydd", "Penrose", "Gwynedd", "Trevelyan", "ap Hywel",
     "ap Cadwaladr", "of Dyfed", "of Powys", "ab Morgan", "ap Tudor",
-    "Penbryn", "of Caerleon", "ap Meurig", "ap Llewelyn", "af Angharad", "Tír na nÓg",
+    "Penbryn", "of Caerleon", "ap Meurig", "ap Llewelyn", "af Angharad", "Tír na nÓg", "Arryn", "Tully", "Bolton", "Mormont", "Clegane",
+    "Hightower", "Seaworth", "Reed", "Baelish", "Blackfyre", "Dayne",
+    "Florent", "Karstark", "Harrenhal", "Velaryon", "Durrandon",
+    "Redwyne"
 ];
 
 // Generate a completely random full name
