@@ -1,4 +1,4 @@
-// Random first names inspired by WoW/fantasy style
+// Random first names
 const firstNames = [
     "Elunaria","Stormwarden","Gorgrim","Thalorien","Sylvalis",
     "Zulgar","Lyraen","Valdrek","Morrath","Eldaeris","Ser","Aeliana",
@@ -24,18 +24,11 @@ const firstNames = [
     "The Idiot", "Robb", "Jorah", "Theon",
     "Gendry", "Brienne", "Sandor", "Davos", "Eddard", "Petyr",
     "Melisandre", "Ygritte", "Oberyn", "Rhaegar", "Asha", "Aelar", "Eldrin", "Faelar", "Therion", "Sylvaris", "Lorien", "Arannis", "Erevan",
-      "Mythrandir",
-      "Caelthas",
-      "Ithilion",
-      "Vaelis",
-      "Rynar",
-      "Elion",
-      "Thamior", "Aeris","Lioren","Sylrin","Vaelin","Ithryn","Caeris",
-      "Elthir","Nerith","Thyren","Saeris","Mythil",
-      "Faelis","Rilith","Eryndor","Quendolin"
+    "Mythrandir","Caelthas","Ithilion","Vaelis","Rynar","Elion","Thamior","Aeris","Lioren","Sylrin","Vaelin","Ithryn","Caeris",
+    "Elthir","Nerith","Thyren","Saeris","Mythil","Faelis","Rilith","Eryndor","Quendolin"
 ];
 
-// Fantasy style last names
+// Random last names
 const lastNames = [
     "Ironfist","Dawnblade","Shadowmere","Stormcaller","Bloodforge",
     "Windwhisper","Nightshade","Starwatcher","Frostweaver","Shadowhunter",
@@ -43,52 +36,54 @@ const lastNames = [
     "Glimmerforge","Hawkridge","Ironbane","Jadeeye","Korrath","Lunaris",
     "Moonshadow","Nightbreeze","Oakenheart","Pyrelight","Quickwater","Ravencrest",
     "Stormrider","Thornfield","Umbermoor","Valewind","Wintermere","Xyrath",
-    "Yarrowind","Zephyros","Evenstar", "Lightbringer", "Stormwind", "Oakenshield", "Silverleaf",
-    "Ironfoot", "Shadowfax", "Windrunner", "Moonwhisper", "Starfire",
-    "Dawntracker", "Nightbreeze", "Frosthelm", "Goldenbranch", "Stonehelm",
-    "Brightblade", "Swiftarrow", "Sunshadow", "Mistwalker", "Darkwater",   "au Andromedus", "au Augustus", "au Barca", "au Bellona",
-    "au Lune", "au Telemanus", "au Trachus", "au Faran",
-    "au Valii-Rath", "au Raa", "of Lagalos", "of Lykos",
-    "ti Horn", "ti Nakamura","Forgotten", "ap Rhys", "ferch Gwilym", "Dafyddson", "Llywelyn", "ab Owain",
-    "ap Gruffydd", "Penrose", "Gwynedd", "Trevelyan", "ap Hywel",
-    "ap Cadwaladr", "of Dyfed", "of Powys", "ab Morgan", "ap Tudor",
-    "Penbryn", "of Caerleon", "ap Meurig", "ap Llewelyn", "af Angharad", "Tír na nÓg", "Arryn", "Tully", "Bolton", "Mormont", "Clegane",
-    "Hightower", "Seaworth", "Reed", "Baelish", "Blackfyre", "Dayne",
-    "Florent", "Karstark", "Harrenhal", "Velaryon", "Durrandon",
-    "Redwyne", "Moonwhisper",
-      "Silverleaf",
-      "Dawnrunner",
-      "Starfall",
-      "Nightbreeze",
-      "Sunweaver",
-      "Shadowgrove",
-      "Frostpetal",
-      "Lightbranch",
-      "Windstride"
+    "Yarrowind","Zephyros","Evenstar","Lightbringer","Stormwind","Oakenshield","Silverleaf",
+    "Ironfoot","Shadowfax","Windrunner","Moonwhisper","Starfire",
+    "Dawntracker","Nightbreeze","Frosthelm","Goldenbranch","Stonehelm",
+    "Brightblade","Swiftarrow","Sunshadow","Mistwalker","Darkwater",
+    "au Andromedus","au Augustus","au Barca","au Bellona",
+    "au Lune","au Telemanus","au Trachus","au Faran",
+    "au Valii-Rath","au Raa","of Lagalos","of Lykos",
+    "ti Horn","ti Nakamura","Forgotten","ap Rhys","ferch Gwilym","Dafyddson","Llywelyn","ab Owain",
+    "ap Gruffydd","Penrose","Gwynedd","Trevelyan","ap Hywel",
+    "ap Cadwaladr","of Dyfed","of Powys","ab Morgan","ap Tudor",
+    "Penbryn","of Caerleon","ap Meurig","ap Llewelyn","af Angharad","Tír na nÓg","Arryn","Tully","Bolton","Mormont","Clegane",
+    "Hightower","Seaworth","Reed","Baelish","Blackfyre","Dayne",
+    "Florent","Karstark","Harrenhal","Velaryon","Durrandon",
+    "Redwyne","Moonwhisper","Silverleaf","Dawnrunner","Starfall","Nightbreeze",
+    "Sunweaver","Shadowgrove","Frostpetal","Lightbranch","Windstride"
 ];
 
-// Generate a completely random full name
+// Functions
 function generateFullName() {
     const randomFirst = firstNames[Math.floor(Math.random() * firstNames.length)];
     const randomLast  = lastNames[Math.floor(Math.random() * lastNames.length)];
-    const fullName = randomFirst + " " + randomLast;
-    document.getElementById("fullNameOutput").textContent = fullName;
+    const output = document.getElementById("fullNameOutput");
+    output.textContent = randomFirst + " " + randomLast;
+
+    // Trigger fade-in animation
+    output.style.animation = 'none';
+    void output.offsetWidth; // restart animation
+    output.style.animation = 'fadeInUp 0.5s forwards';
 }
 
-// Generate a last name to match a user-provided first name
 function generateMatchingLastName() {
     const firstName = document.getElementById("firstNameInput").value.trim();
-    if (firstName === "") {
+    if (!firstName) {
         alert("Please enter a first name!");
         return;
     }
-
     const randomLast = lastNames[Math.floor(Math.random() * lastNames.length)];
-    const matchedName = firstName + " " + randomLast;
-    document.getElementById("matchedLastNameOutput").textContent = matchedName;
+    const output = document.getElementById("matchedLastNameOutput");
+    output.textContent = firstName + " " + randomLast;
+
+    // Trigger fade-in animation
+    output.style.animation = 'none';
+    void output.offsetWidth; // restart animation
+    output.style.animation = 'fadeInUp 0.5s forwards';
+}
+
+// Attach buttons after DOM loads
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("fullNameBtn").addEventListener("click", generateFullName);
     document.getElementById("matchLastBtn").addEventListener("click", generateMatchingLastName);
 });
-
-}

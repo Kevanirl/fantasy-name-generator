@@ -1,67 +1,53 @@
-/* Font */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap');
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 
 body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
   background: #0b0f19;
   color: #f5f5f5;
-  font-family: Arial, Helvetica, sans-serif;
-  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Main wrapper */
 .container {
   background: #151a2d;
-  width: 90%;
   max-width: 480px;
-  padding: 25px;
-  border-radius: 10px;
+  width: 90%;
+  padding: 30px;
+  border-radius: 12px;
   border: 1px solid #2c3355;
   text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-/* Title */
 h1 {
-  margin-bottom: 12px;
+  font-family: 'Cinzel', serif;
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #e6d8a2;
+  line-height: 1.4;
 }
-
-.subtitle {
-  margin-bottom: 26px;
-}
-
-input[type="text"] {
-  margin-bottom: 18px;
-}
-
-button {
-  margin-top: 14px;
-}
-
 
 .subtitle {
   font-size: 14px;
   color: #b0b0b0;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  line-height: 1.6;
 }
 
-/* Inputs */
 input[type="text"] {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 18px;
+  border-radius: 6px;
   border: 1px solid #3a416b;
   background: #0b0f19;
   color: #ffffff;
   font-size: 16px;
+  line-height: 1.5;
 }
 
 input::placeholder {
@@ -73,18 +59,18 @@ input:focus {
   border-color: #e6d8a2;
 }
 
-/* Buttons */
 button {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
+  padding: 12px;
+  margin-top: 12px;
   background: #e6d8a2;
   color: #151a2d;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 16px;
-  cursor: pointer;
   font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 button:hover {
@@ -100,9 +86,8 @@ button.secondary:hover {
   background: #3a416b;
 }
 
-/* Output */
 .output {
-  margin-top: 20px;
+  margin-top: 25px;
   padding: 15px;
   border-top: 1px solid #3a416b;
 }
@@ -110,18 +95,30 @@ button.secondary:hover {
 .output span {
   display: block;
   font-family: 'Cinzel', serif;
-  font-size: 20px;
-  margin-top: 8px;
+  font-size: 22px;
+  line-height: 2;
+  margin-top: 14px;
   color: #e6d8a2;
+
+  /* Fade-in animation */
+  opacity: 0;
+  transform: translateY(10px);
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
 }
 
-/* Footer */
-.footer {
-  margin-top: 20px;
-  font-size: 12px;
-  color: #888;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .container > * {
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 }
 
-}
