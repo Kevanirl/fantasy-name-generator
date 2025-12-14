@@ -10,11 +10,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-background-image: url('https://raw.githubusercontent.com/Kevanirl/fantasy-name-generator/refs/heads/main/878056-3883857394.jpg'); /* Path to your image */
-    background-size: cover;      /* Makes the image cover the whole screen */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents tiling */
-    background-attachment: fixed; /* Optional: makes the background stay while scrolling */
+  background-image: url('https://raw.githubusercontent.com/Kevanirl/fantasy-name-generator/refs/heads/main/878056-3883857394.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .container {
@@ -26,6 +26,19 @@ background-image: url('https://raw.githubusercontent.com/Kevanirl/fantasy-name-g
   border: 1px solid #2c3355;
   text-align: center;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
+
+  /* Glowing breathing border */
+  animation: glow 2s infinite alternate;
+  box-shadow: 0 0 10px #e6d8a2, 0 0 20px #e6d8a2;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px #e6d8a2, 0 0 20px #e6d8a2;
+  }
+  to {
+    box-shadow: 0 0 30px #e6d8a2, 0 0 50px #e6d8a2;
+  }
 }
 
 h1 {
@@ -126,4 +139,3 @@ button.secondary:hover {
 .container > * {
   margin-bottom: 12px;
 }
-
