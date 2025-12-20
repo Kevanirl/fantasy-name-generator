@@ -39,11 +39,11 @@ function generateMatchingLastName() {
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("fullNameBtn").addEventListener("click", generateFullName);
     document.getElementById("matchLastBtn").addEventListener("click", generateMatchingLastName);
-    initializeMap(); // Initialize the interactive Agon map
+    initializeMap();
 });
 
 // --------------------
-// Interactive Agon Map
+// Interactive Fantasy Map
 // --------------------
 const mapContainer = document.getElementById('map-container');
 const mapImage = document.getElementById('map-image');
@@ -59,7 +59,6 @@ function containsBadWords(text) {
 }
 
 function initializeMap() {
-    // Click event to place marker
     mapImage.addEventListener('click', function(e) {
         const rect = mapImage.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -80,6 +79,12 @@ function initializeMap() {
         marker.textContent = markerName;
         mapContainer.appendChild(marker);
         markers.push(marker);
+
+        // Optional: floating/fade animation for fantasy effect
+        marker.animate([
+            { transform: 'translate(-50%, -50%) scale(0)', opacity: 0 },
+            { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 }
+        ], { duration: 300, easing: 'ease-out' });
     });
 }
 
