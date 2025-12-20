@@ -4,7 +4,174 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fantasy Interactive Agon Map</title>
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* --------------------
+   Global Styles
+-------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: #000000; /* full black page */
+  font-family: 'Cinzel', serif;
+  color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+
+/* Container */
+.container {
+  background: rgba(10,10,10,0.95);
+  max-width: 520px;
+  width: 90%;
+  padding: 30px;
+  border-radius: 16px;
+  border: 2px solid #a78f5a;
+  text-align: center;
+  box-shadow: 0 0 25px #e6d8a2, 0 0 50px #e6d8a2;
+}
+
+/* Headers */
+h1, h2 {
+  font-family: 'Cinzel', serif;
+  color: #f7e9b7;
+  text-shadow: 0 0 10px #f7e9b7, 0 0 20px #e6d8a2;
+  animation: glow 3s infinite alternate;
+  margin-bottom: 10px;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 15px;
+  color: #d0c5a0;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  text-shadow: 0 0 4px #bfa867;
+}
+
+/* Inputs */
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid #a78f5a;
+  background: rgba(0,0,0,0.8);
+  color: #f5f5f5;
+  font-size: 16px;
+  text-shadow: 0 0 2px #d0c5a0;
+}
+
+input::placeholder {
+  color: #c9b886;
+}
+
+input:focus {
+  outline: none;
+  border-color: #f7e9b7;
+  box-shadow: 0 0 8px #f7e9b7;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  background: linear-gradient(45deg, #e6d8a2, #f7e9b7);
+  color: #151a2d;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 0 0 4px #bfa867;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #f7e9b7, #e6d8a2);
+  box-shadow: 0 0 12px #f7e9b7;
+}
+
+/* Output */
+.output {
+  margin-top: 25px;
+  padding: 15px;
+  border-top: 1px solid #a78f5a;
+}
+
+.output span {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  line-height: 2;
+  margin-top: 14px;
+  color: #f7e9b7;
+  opacity: 0;
+  transform: translateY(10px);
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
+  text-shadow: 0 0 6px #fff3b0;
+}
+
+/* Glow animation */
+@keyframes glow {
+  from { text-shadow: 0 0 10px #f7e9b7, 0 0 20px #e6d8a2; }
+  to { text-shadow: 0 0 20px #f7e9b7, 0 0 40px #e6d8a2; }
+}
+
+/* FadeInUp for outputs */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Map Styles */
+#map-container {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(230, 216, 162, 0.6);
+  overflow: hidden;
+  background: #1b1e30;
+}
+
+#map-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: crosshair;
+  border-radius: 16px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+}
+
+.marker {
+  position: absolute;
+  background: radial-gradient(circle, #ffd700, #e6d8a2);
+  color: #151a2d;
+  padding: 4px 8px;
+  border-radius: 50%;
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: none;
+  text-shadow: 0 0 6px #fff3b0;
+  animation: popIn 0.3s ease forwards;
+}
+
+@keyframes popIn {
+  from { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.container > * {
+  margin-bottom: 14px;
+}
+</style>
 </head>
 <body>
 
@@ -30,4 +197,84 @@
   </div>
 </div>
 
-<script src="script.js"></
+<script>
+// --------------------
+// Fantasy Name Generator
+// --------------------
+const firstNames = ["Arwen", "Frodo", "Gandalf", "Legolas", "Galadriel"];
+const lastNames = ["Baggins", "Brandybuck", "Greyhame", "Elensar", "Stormcrow"];
+
+function generateFullName() {
+    const randomFirst = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const randomLast  = lastNames[Math.floor(Math.random() * lastNames.length)];
+    const output = document.getElementById("fullNameOutput");
+    output.textContent = randomFirst + " " + randomLast;
+    output.style.animation = 'none';
+    void output.offsetWidth;
+    output.style.animation = 'fadeInUp 0.5s forwards';
+}
+
+function generateMatchingLastName() {
+    const firstName = document.getElementById("firstNameInput").value.trim();
+    if (!firstName) {
+        alert("Please enter a first name!");
+        return;
+    }
+    const randomLast = lastNames[Math.floor(Math.random() * lastNames.length)];
+    const output = document.getElementById("matchedLastNameOutput");
+    output.textContent = firstName + " " + randomLast;
+    output.style.animation = 'none';
+    void output.offsetWidth;
+    output.style.animation = 'fadeInUp 0.5s forwards';
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("fullNameBtn").addEventListener("click", generateFullName);
+    document.getElementById("matchLastBtn").addEventListener("click", generateMatchingLastName);
+    initializeMap();
+});
+
+// --------------------
+// Interactive Map
+// --------------------
+const mapContainer = document.getElementById('map-container');
+const mapImage = document.getElementById('map-image');
+const markers = [];
+const badWords = ["badword1","badword2","idiot","curseword"];
+
+function containsBadWords(text) {
+    const lowerText = text.toLowerCase();
+    return badWords.some(word => lowerText.includes(word));
+}
+
+function initializeMap() {
+    mapImage.addEventListener('click', function(e) {
+        const rect = mapImage.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        let markerName = prompt('Enter marker name:');
+        if (!markerName) return;
+        if (containsBadWords(markerName)) {
+            alert('Marker name contains inappropriate words. Please try again.');
+            return;
+        }
+
+        const marker = document.createElement('div');
+        marker.className = 'marker';
+        marker.style.left = x + 'px';
+        marker.style.top = y + 'px';
+        marker.textContent = markerName;
+        mapContainer.appendChild(marker);
+        markers.push(marker);
+
+        marker.animate([
+            { transform: 'translate(-50%, -50%) scale(0)', opacity: 0 },
+            { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 }
+        ], { duration: 300, easing: 'ease-out' });
+    });
+}
+</script>
+
+</body>
+</html>
