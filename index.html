@@ -1,95 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Name Generator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #f9f9f9;
-        }
-        h1 {
-            color: #333;
-        }
-        input, button {
-            padding: 10px;
-            font-size: 16px;
-            margin: 5px;
-        }
-        p {
-            margin-top: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #007BFF;
-        }
-        ul {
-            margin-top: 20px;
-            list-style: none;
-            padding: 0;
-        }
-        li {
-            font-size: 18px;
-            margin: 3px 0;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fantasy Interactive Agon Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* --------------------
+   Global Styles
+-------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: #000000; /* full black page */
+  font-family: 'Cinzel', serif;
+  color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+
+/* Container */
+.container {
+  background: rgba(10,10,10,0.95);
+  max-width: 520px;
+  width: 90%;
+  padding: 30px;
+  border-radius: 16px;
+  border: 2px solid #a78f5a;
+  text-align: center;
+  box-shadow: 0 0 25px #e6d8a2, 0 0 50px #e6d8a2;
+}
+
+/* Headers */
+h1, h2 {
+  font-family: 'Cinzel', serif;
+  color: #f7e9b7;
+  text-shadow: 0 0 10px #f7e9b7, 0 0 20px #e6d8a2;
+  animation: glow 3s infinite alternate;
+  margin-bottom: 10px;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: 15px;
+  color: #d0c5a0;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  text-shadow: 0 0 4px #bfa867;
+}
+
+/* Inputs */
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid #a78f5a;
+  background: rgba(0,0,0,0.8);
+  color: #f5f5f5;
+  font-size: 16px;
+  text-shadow: 0 0 2px #d0c5a0;
+}
+
+input::placeholder {
+  color: #c9b886;
+}
+
+input:focus {
+  outline: none;
+  border-color: #f7e9b7;
+  box-shadow: 0 0 8px #f7e9b7;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  background: linear-gradient(45deg, #e6d8a2, #f7e9b7);
+  color: #151a2d;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 0 0 4px #bfa867;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #f7e9b7, #e6d8a2);
+  box-shadow: 0 0 12px #f7e9b7;
+}
+
+/* Output */
+.output {
+  margin-top: 25px;
+  padding: 15px;
+  border-top: 1px solid #a78f5a;
+}
+
+.output span {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  line-height: 2;
+  margin-top: 14px;
+  color: #f7e9b7;
+  opacity: 0;
+  transform: translateY(10px);
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
+  text-shadow: 0 0 6px #fff3b0;
+}
+
+/* Glow animation */
+@keyframes glow {
+  from { text-shadow: 0 0 10px #f7e9b7, 0 0 20px #e6d8a2; }
+  to { text-shadow: 0 0 20px #f7e9b7, 0 0 40px #e6d8a2; }
+}
+
+/* FadeInUp for outputs */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Map Styles */
+#map-container {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(230, 216, 162, 0.6);
+  overflow: hidden;
+  background: #1b1e30;
+}
+
+#map-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: crosshair;
+  border-radius: 16px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+}
+
+.marker {
+  position: absolute;
+  background: radial-gradient(circle, #ffd700, #e6d8a2);
+  color: #151a2d;
+  padding: 4px 8px;
+  border-radius: 50%;
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: none;
+  text-shadow: 0 0 6px #fff3b0;
+  animation: popIn 0.3s ease forwards;
+}
+
+@keyframes popIn {
+  from { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.container > * {
+  margin-bottom: 14px;
+}
+</style>
 </head>
 <body>
 
-    <h1>Random Name Generator</h1>
+<div class="container">
+  <h1>Fantasy Name Generator</h1>
+  <p class="subtitle">Generate magical names or place markers on the Agon map.</p>
 
-    <input type="text" id="name-input" placeholder="Enter a name">
-    <button id="add-btn">Add Name</button>
-    <button id="generate-btn">Generate Name</button>
+  <!-- Name Generator -->
+  <input type="text" id="firstNameInput" placeholder="Enter first name (optional)">
+  <button id="fullNameBtn">Generate Full Name</button>
+  <button id="matchLastBtn">Generate Matching Last Name</button>
 
-    <p id="name-output">Click "Generate Name" to see a result!</p>
+  <div class="output">
+    <span id="fullNameOutput"></span>
+    <span id="matchedLastNameOutput"></span>
+  </div>
 
-    <ul id="name-list"></ul>
+  <!-- Interactive Map -->
+  <h2>Interactive Agon Map</h2>
+  <p>Click on the map to place a marker. Marker names are filtered for inappropriate words.</p>
+  <div id="map-container">
+    <img src="https://raw.githubusercontent.com/Kevanirl/fantasy-name-generator/refs/heads/main/fPDnu.jpeg" alt="Agon Map" id="map-image">
+  </div>
+</div>
 
-    <script>
-        const nameInput = document.getElementById('name-input');
-        const addBtn = document.getElementById('add-btn');
-        const generateBtn = document.getElementById('generate-btn');
-        const output = document.getElementById('name-output');
-        const nameListElement = document.getElementById('name-list');
+<script>
+// --------------------
+// Fantasy Name Generator
+// --------------------
+const firstNames = ["Arwen", "Frodo", "Gandalf", "Legolas", "Galadriel"];
+const lastNames = ["Baggins", "Brandybuck", "Greyhame", "Elensar", "Stormcrow"];
 
-        let names = ['Alice', 'Bob', 'Charlie', 'David', 'Eve'];
+function generateFullName() {
+    const randomFirst = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const randomLast  = lastNames[Math.floor(Math.random() * lastNames.length)];
+    const output = document.getElementById("fullNameOutput");
+    output.textContent = randomFirst + " " + randomLast;
+    output.style.animation = 'none';
+    void output.offsetWidth;
+    output.style.animation = 'fadeInUp 0.5s forwards';
+}
 
-        // Function to update displayed list
-        function updateList() {
-            nameListElement.innerHTML = '';
-            names.forEach(name => {
-                const li = document.createElement('li');
-                li.textContent = name;
-                nameListElement.appendChild(li);
-            });
+function generateMatchingLastName() {
+    const firstName = document.getElementById("firstNameInput").value.trim();
+    if (!firstName) {
+        alert("Please enter a first name!");
+        return;
+    }
+    const randomLast = lastNames[Math.floor(Math.random() * lastNames.length)];
+    const output = document.getElementById("matchedLastNameOutput");
+    output.textContent = firstName + " " + randomLast;
+    output.style.animation = 'none';
+    void output.offsetWidth;
+    output.style.animation = 'fadeInUp 0.5s forwards';
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("fullNameBtn").addEventListener("click", generateFullName);
+    document.getElementById("matchLastBtn").addEventListener("click", generateMatchingLastName);
+    initializeMap();
+});
+
+// --------------------
+// Interactive Map
+// --------------------
+const mapContainer = document.getElementById('map-container');
+const mapImage = document.getElementById('map-image');
+const markers = [];
+const badWords = ["badword1","badword2","idiot","curseword"];
+
+function containsBadWords(text) {
+    const lowerText = text.toLowerCase();
+    return badWords.some(word => lowerText.includes(word));
+}
+
+function initializeMap() {
+    mapImage.addEventListener('click', function(e) {
+        const rect = mapImage.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        let markerName = prompt('Enter marker name:');
+        if (!markerName) return;
+        if (containsBadWords(markerName)) {
+            alert('Marker name contains inappropriate words. Please try again.');
+            return;
         }
 
-        // Initialize the list
-        updateList();
+        const marker = document.createElement('div');
+        marker.className = 'marker';
+        marker.style.left = x + 'px';
+        marker.style.top = y + 'px';
+        marker.textContent = markerName;
+        mapContainer.appendChild(marker);
+        markers.push(marker);
 
-        // Add name button
-        addBtn.addEventListener('click', () => {
-            const newName = nameInput.value.trim();
-            if (newName && !names.includes(newName)) {
-                names.push(newName);
-                nameInput.value = '';
-                updateList();
-            }
-        });
-
-        // Generate random name button
-        generateBtn.addEventListener('click', () => {
-            if (names.length === 0) {
-                output.textContent = 'No names available!';
-                return;
-            }
-            const randomIndex = Math.floor(Math.random() * names.length);
-            output.textContent = names[randomIndex];
-        });
-    </script>
+        marker.animate([
+            { transform: 'translate(-50%, -50%) scale(0)', opacity: 0 },
+            { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 }
+        ], { duration: 300, easing: 'ease-out' });
+    });
+}
+</script>
 
 </body>
 </html>
