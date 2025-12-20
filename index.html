@@ -3,12 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fantasy Name Generator</title>
+<title>Fantasy Name Generator & Interactive Map</title>
 <link rel="stylesheet" href="style.css">
+
+<!-- Leaflet CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-sA+vQ2JDZ3JhqtmFzv9Fp/ZXlcwKxS1Q3O9p+Ge7Q6k="
+  crossorigin=""
+/>
 </head>
 <body>
 <div class="container">
   <h1>Fantasy Name Generator</h1>
+<img src="images/my-map.png" alt="Fantasy Map" id="mapImage">
   <p class="subtitle">Generate epic fantasy names for your characters.</p>
 
   <!-- Input for custom first name -->
@@ -25,7 +34,21 @@
   </div>
 </div>
 
-<!-- JS -->
+<!-- Map Section -->
+<h2>Interactive Map</h2>
+<p>Click on the map to add a location (no bad words allowed!)</p>
+<input type="text" id="locationNameInput" placeholder="Enter location name">
+<button id="addMarkerBtn">Add Marker</button>
+<div id="map" style="height: 500px; width: 100%; margin-top: 10px;"></div>
+
+<!-- JS Libraries -->
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-o9N1j7kLkFyC1ZgU5fYKpRrK0pFQaY2j8tP8u0x4tkM="
+  crossorigin=""
+></script>
+
+<!-- Your JS -->
 <script src="script.js"></script>
 </body>
 </html>
