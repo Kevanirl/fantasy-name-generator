@@ -3,66 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agon Map Viewer</title>
+<title>Interactive Agon Map</title>
 <style>
-  body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fafafa; }
+  body { font-family: Arial, sans-serif; margin: 0; background: #fafafa; }
   .tabs { display: flex; border-bottom: 2px solid #ddd; background: #fff; }
   .tab { padding: 15px 25px; cursor: pointer; transition: background 0.3s; }
   .tab.active { border-bottom: 3px solid #007BFF; font-weight: bold; }
   .tab:hover { background: #f0f0f0; }
   .tab-content { display: none; padding: 20px; }
   .tab-content.active { display: block; }
-  #map-container { text-align: center; margin-top: 20px; }
-  #map-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-  input[type="file"] { margin-top: 15px; }
+  #map-container { position: relative; text-align: center; margin-top: 20px; }
+  #map-container img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); cursor: crosshair; }
+  .marker { position: absolute; background: #ff0000; color: #fff; padding: 2px 6px; border-radius: 50%; font-size: 12px; transform: translate(-50%, -50%); pointer-events: none; }
+  input[type="text"] { padding: 5px; font-size: 14px; }
 </style>
 </head>
 <body>
 
 <div class="tabs">
   <div class="tab active" data-tab="home">Home</div>
-  <div class="tab" data-tab="add-market">Add Market</div>
+  <div class="tab" data-tab="interactive-map">Interactive Map</div>
 </div>
 
 <div id="home" class="tab-content active">
   <h2>Welcome</h2>
-  <p>Use the "Add Market" tab to view the Agon map.</p>
+  <p>Use the "Interactive Map" tab to place markers on the Agon map.</p>
 </div>
 
-<div id="add-market" class="tab-content">
+<div id="interactive-map" class="tab-content">
   <h2>Agon Map</h2>
-  <input type="file" id="map-upload" accept="image/*">
+  <p>Click on the map to place a marker. Marker names are filtered for inappropriate words.</p>
   <div id="map-container">
-    <img src="https://raw.githubusercontent.com/Kevanirl/fantasy-name-generator/refs/heads/main/fPDnu.jpeg" alt="Agon Map">
+    <img src="https://raw.githubusercontent.com/Kevanirl/fantasy-name-generator/refs/heads/main/fPDnu.jpeg" alt="Agon Map" id="map-image">
   </div>
 </div>
 
 <script>
-  // Tab switching
-  const tabs = document.querySelectorAll('.tab');
-  const contents = document.querySelectorAll('.tab-content');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      contents.forEach(c => c.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById(tab.dataset.tab).classList.add('active');
-    });
+// Tab switching logic
+const tabs = document.querySelectorAll('.tab');
+const contents = document.querySelectorAll('.tab-content');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    contents.forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
   });
+});
 
-  // Map upload
-  const uploadInput = document.getElementById('map-upload');
-  const mapContainer = document.getElementById('map-container');
-  uploadInput.addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        mapContainer.innerHTML = `<img src="${e.target.result}" alt="Agon Map">`;
-      };
-      reader.readAsDataURL(file);
-    }
-  });
+// Interactive map logic
+const mapContainer = document.getElementById('map-container');
+const mapImage = document.getElementById('map-image');
+
+// Simple bad words list (expand as needed)
+const badWords = ['badword1', 'badword2', 'badword3'];
+
+function containsBadWord(text) {
+  return badWords.some(word => text.toLowerCase().includes(word));
+}
+
+mapImage.addEventListener('click', function(e) {
+  const rect = mapImage.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  let markerName = prompt('Enter marker name:');
+  if (!markerName) return;
+
+  if (containsBadWord(markerName)) {
+    alert('Marker name contains inappropriate words. Please try again.');
+    return;
+  }
+
+  const marker = document.createElement('div');
+  marker.className = 'marker';
+  marker.style.left = x + 'px';
+  marker.style.top = y + 'px';
+  marker.textContent = markerName;
+  mapContainer.appendChild(marker);
+});
 </script>
 
 </body>

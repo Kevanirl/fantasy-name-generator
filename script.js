@@ -39,16 +39,17 @@ function generateMatchingLastName() {
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("fullNameBtn").addEventListener("click", generateFullName);
     document.getElementById("matchLastBtn").addEventListener("click", generateMatchingLastName);
-    initializeMap(); // Initialize the map
+    initializeMap(); // Initialize the interactive Agon map
 });
 
 // --------------------
-// Interactive Map
+// Interactive Agon Map
 // --------------------
-let map;
-let markers = [];
+const mapContainer = document.getElementById('map-container');
+const mapImage = document.getElementById('map-image');
+const markers = [];
 
-// Example bad words list (add more as needed)
+// Example bad words list
 const badWords = ["badword1", "badword2", "idiot", "curseword"];
 
 // Check for bad words in input
@@ -58,47 +59,27 @@ function containsBadWords(text) {
 }
 
 function initializeMap() {
-    map = L.map('map').setView([51.505, -0.09], 3); // Centered globally
+    // Click event to place marker
+    mapImage.addEventListener('click', function(e) {
+        const rect = mapImage.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+        let markerName = prompt('Enter marker name:');
+        if (!markerName) return;
 
-    // Add marker on button click
-    document.getElementById("addMarkerBtn").addEventListener("click", () => {
-        const nameInput = document.getElementById("locationNameInput").value.trim();
-        if (!nameInput) {
-            alert("Please enter a location name.");
-            return;
-        }
-        if (containsBadWords(nameInput)) {
-            alert("Inappropriate words are not allowed.");
+        if (containsBadWords(markerName)) {
+            alert('Marker name contains inappropriate words. Please try again.');
             return;
         }
 
-        const center = map.getCenter(); // place marker at center of map
-        const marker = L.marker(center).addTo(map).bindPopup(nameInput);
+        const marker = document.createElement('div');
+        marker.className = 'marker';
+        marker.style.left = x + 'px';
+        marker.style.top = y + 'px';
+        marker.textContent = markerName;
+        mapContainer.appendChild(marker);
         markers.push(marker);
-
-        // Clear input
-        document.getElementById("locationNameInput").value = "";
-    });
-
-    // Optional: add marker on map click
-    map.on('click', function(e) {
-        const nameInput = document.getElementById("locationNameInput").value.trim();
-        if (!nameInput) {
-            alert("Please enter a location name before clicking the map.");
-            return;
-        }
-        if (containsBadWords(nameInput)) {
-            alert("Inappropriate words are not allowed.");
-            return;
-        }
-
-        const marker = L.marker(e.latlng).addTo(map).bindPopup(nameInput);
-        markers.push(marker);
-        document.getElementById("locationNameInput").value = "";
     });
 }
+
